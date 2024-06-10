@@ -83,3 +83,19 @@ h1.temp {
     top: 0;
     left: 20px;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+    color:azure;
+
+}
+
+footer span a {
+    color:azure;
+}

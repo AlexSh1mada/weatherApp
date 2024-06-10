@@ -34,7 +34,9 @@ let weather = {
           document.body.style.backgroundSize = 'cover';
           document.body.style.backgroundRepeat = 'no-repeat';
           document.body.style.backgroundPosition = 'center';
-          console.log(jsonData)
+          document.querySelector("footer a").href = jsonData.links.html;
+          document.querySelector("footer a").innerHTML = jsonData.user.name;
+          console.log(jsonData) 
 
         })
         .catch(err => {
