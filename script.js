@@ -9,10 +9,15 @@ let weather = {
         .then((data) => this.displayWeather(data));
     },
     displayWeather: function (data) {
+        let clientID = "aKxyJLXDw27b2wgAla7VCMagftTv8zDoe5jwfxm39EM";
+
         const {name} = data;
         const {icon, description} = data.weather[0];
         const {temp, humidity} = data.main;
         const {speed} = data.wind;
+
+        const image = `https://api.unsplash.com/photos/random?query=${name}&client_id=${clientID}`;
+
         //console.log(name, icon, description, temp, humidity, speed);
         document.querySelector(".city").innerText = "Weather in " + name;
         document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
@@ -21,7 +26,21 @@ let weather = {
         document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
         document.querySelector(".wind").innerText = "Wind speed: " + speed + " km/h";
         document.querySelector(".weather").classList.remove("loading");
-        document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')";
+
+        fetch(image)
+        .then(response => response.json())
+        .then(jsonData => {
+          document.body.style.backgroundImage = `url(${jsonData.urls.regular})`;
+          document.body.style.backgroundSize = 'cover';
+          document.body.style.backgroundRepeat = 'no-repeat';
+          document.body.style.backgroundPosition = 'center';
+          console.log(jsonData)
+
+        })
+        .catch(err => {
+          console.error('Error fetching image: ', err)
+        })
+
     },
     search: function () {
         this.fetchWeather(document.querySelector(".search-bar").value);
@@ -30,7 +49,7 @@ let weather = {
 
 let geocode = {
     reverseGeoCode: function (latitude, longitude) {
-        var api_key = 'ed9ab4f335694ac392d75b494e6a3e51';
+        var api_key = '01b3e909f9ae4f06b15db4c7202586ec';
       
         var api_url = 'https://api.opencagedata.com/geocode/v1/json'
       
