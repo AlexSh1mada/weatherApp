@@ -1,3 +1,4 @@
+
 body {
     display: flex;
     justify-content: center;
@@ -11,19 +12,55 @@ body {
 }
 .card  {
     background: #000000d0;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.9);
     color: white;
     padding: 2em;
-    border-radius: 25px;
+    border-radius: 20px;
     width: 100%;
     max-width: 400px;
     margin: 1em;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
+    transition: 0.5s ease;
+}
+
+.card .weather {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card .weather h2,
+.card .weather h1,
+.card .weather .description,
+.card .weather .humidity,
+.card .weather .wind {
+    margin-left: 20px;
+    transform: translateZ(30px);
+    transition: transform 0.5s ease;
+}
+
+.card:hover {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .search {
+    position: absolute;
+    top: 0;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.search .search-bar {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.search button {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 
 button {
     margin: 0.5em;
@@ -35,7 +72,7 @@ button {
     background: #7c7c7c2b;
     color: white;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
+    transition: 0.1s ease-in-out;
 }
 
 input.search-bar {
@@ -52,7 +89,7 @@ input.search-bar {
 
 button:hover
 {
-    background: #7c7c7c6b;
+    background: #58575793;
 }
 
 h1.temp {
@@ -73,7 +110,7 @@ h1.temp {
     visibility: hidden;
     max-height: 20px;
     position: relative;
-  }
+}
 
 .weather.loading:after {
     visibility: visible;

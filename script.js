@@ -6,7 +6,9 @@ let weather = {
          + "&units=metric&appid=" 
          + this.apiKey)
         .then((response) => response.json())
-        .then((data) => this.displayWeather(data));
+        .then((data) => {
+          console.log(data);
+          this.displayWeather(data)});
     },
     displayWeather: function (data) {
         let clientID = "aKxyJLXDw27b2wgAla7VCMagftTv8zDoe5jwfxm39EM";
